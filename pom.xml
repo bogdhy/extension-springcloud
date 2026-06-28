@@ -413,6 +413,7 @@
             </activation>
             <modules>
                 <module>springcloud-spring-boot-3-integrationtests</module>
+                <module>springcloud-spring-boot-4-integrationtests</module>
             </modules>
         </profile>
 
