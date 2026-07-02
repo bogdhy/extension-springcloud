@@ -15,16 +15,19 @@
   ~ limitations under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <groupId>org.axonframework.extensions.springcloud</groupId>
     <artifactId>axon-springcloud-parent</artifactId>
-    <version>4.12.2-SNAPSHOT</version>
+    <version>4.13.0-SNAPSHOT</version>
+
     <modules>
         <module>springcloud</module>
         <module>springcloud-spring-boot-autoconfigure</module>
         <module>springcloud-spring-boot-starter</module>
     </modules>
+
     <packaging>pom</packaging>
 
     <modelVersion>4.0.0</modelVersion>
@@ -52,7 +55,7 @@
             ${project.basedir}/../coverage-report/target/site/jacoco-aggregate/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
 
-        <axon.version>4.12.0</axon.version>
+        <axon.version>4.13.2</axon.version>
 
         <spring.version>5.3.39</spring.version>
         <spring-boot.version>2.7.18</spring-boot.version>
@@ -82,7 +85,7 @@
         <maven-javadoc.version>3.11.2</maven-javadoc.version>
         <maven-release.version>3.1.1</maven-release.version>
         <maven-source.version>3.3.1</maven-source.version>
-        <maven-surefire.version>2.22.2</maven-surefire.version>
+        <maven-surefire.version>3.5.4</maven-surefire.version>
         <maven-resources.version>3.3.1</maven-resources.version>
     </properties>
 
@@ -410,6 +413,7 @@
             </activation>
             <modules>
                 <module>springcloud-spring-boot-3-integrationtests</module>
+                <module>springcloud-spring-boot-4-integrationtests</module>
             </modules>
         </profile>
 

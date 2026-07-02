@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.axonframework.extensions.mongo.integration;
+package org.axonframework.extensions.springcloud.integration;
 
 import org.axonframework.commandhandling.CommandMessage;
 import org.axonframework.commandhandling.GenericCommandMessage;

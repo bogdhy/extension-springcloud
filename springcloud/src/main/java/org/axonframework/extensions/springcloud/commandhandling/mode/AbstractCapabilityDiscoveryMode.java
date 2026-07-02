@@ -18,10 +18,11 @@ package org.axonframework.extensions.springcloud.commandhandling.mode;
 
 import org.axonframework.commandhandling.distributed.CommandMessageFilter;
 import org.axonframework.common.AxonConfigurationException;
-import org.springframework.cloud.client.DefaultServiceInstance;
 import org.springframework.cloud.client.ServiceInstance;
 
 import java.net.URI;
+import java.util.Collections;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -80,21 +81,46 @@ public abstract class AbstractCapabilityDiscoveryMode<B extends CapabilityDiscov
     }
 
     /**
-     * This no-op version of the {@link DefaultServiceInstance} enforces the {@link ServiceInstance#getUri()} to a fixed
-     * empty {@link URI}. Through this, there's always a {@code ServiceInstance} present that will never match others.
+     * This no-op version of the {@link ServiceInstance} enforces {@link ServiceInstance#getUri()} to a fixed empty
+     * {@link URI}. Through this, there's always a {@code ServiceInstance} present that will never match others.
      * <p>
      * This no-op version is the default local {@code ServiceInstance}, ensuring that when
      * {@link #updateLocalCapabilities(ServiceInstance, int, CommandMessageFilter)} is never invoked (when an instance
      * has zero command handlers) it will still play nicely in the discovery mechanism.
      */
-    private static class FixedURIServiceInstance extends DefaultServiceInstance {
+    private static class FixedURIServiceInstance implements ServiceInstance {
 
         private static final ServiceInstance INSTANCE = new FixedURIServiceInstance();
         private static final URI FIXED_URI = URI.create("");
 
         @Override
+        public String getServiceId() {
+            return "";
+        }
+
+        @Override
+        public String getHost() {
+            return "";
+        }
+
+        @Override
+        public int getPort() {
+            return 0;
+        }
+
+        @Override
+        public boolean isSecure() {
+            return false;
+        }
+
+        @Override
         public URI getUri() {
             return FIXED_URI;
+        }
+
+        @Override
+        public Map<String, String> getMetadata() {
+            return Collections.emptyMap();
         }
     }
 }
